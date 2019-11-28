@@ -1,18 +1,13 @@
 {
   "name": "Kakarotto",
-  "description": "Only For Legends..... By : @r4v4n4",
+  "description": "فقط لمُستخدمي تيليجرام العرب..... By : @channel22_22",
   "logo": "https://telegra.ph/file/18cea3a9a7d9b3261dc1a.jpg",
   "keywords": [
-    "sex",
-    "porn",
-    "xxx",
-    "dick",
-    "vagina",
-    "boobs"
+    "uniborg",
+    "Arabic"
   ],
   "repository": "https://gitlab.com/SpEcHiDe/UniBorg",
   "website": "https://telegram.dog/UniBorg",
-  "success_url": "https://telegram.dog/r4v4n4",
   "env": {
     "ENV": {
       "description": "Setting this to ANYTHING will enable environment variables.",
