@@ -1,4 +1,5 @@
-"""COMMAND : .clock animation"""
+"""الأوامر
+: .ساعة متحركة"""
 # (c) @UniBorg
 # Original written by @UniBorg edit by @INF1N17Y
 
@@ -7,7 +8,7 @@ import asyncio
 from collections import deque
 
 
-@borg.on(events.NewMessage(pattern=r"\.clock animation", outgoing=True))
+@borg.on(events.NewMessage(pattern=r"\.ساعة متحركة", outgoing=True))
 async def _(event):
 	if event.fwd_from:
 		return
