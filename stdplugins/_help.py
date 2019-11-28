@@ -1,11 +1,12 @@
-"""COMMAND : .info, .dc, .nigga"""
+"""الأوامر :
+.حول, .dc, .nigga"""
 
 import sys
 from telethon import events, functions, __version__
 from uniborg.util import admin_cmd
 
 
-@borg.on(admin_cmd(pattern="info ?(.*)", allow_sudo=True))  # pylint:disable=E0602
+@borg.on(admin_cmd(pattern="حول ?(.*)", allow_sudo=True))  # pylint:disable=E0602
 async def _(event):
     if event.fwd_from:
         return
@@ -14,11 +15,11 @@ async def _(event):
         s_help_string = borg._plugins[splugin_name].__doc__
     else:
         s_help_string = "****:"
-    help_string = """@UniBorg ( **Custom Built By** @r4v4n4 ) \n**Verified Account**: ✅\n**Official Website**: https://ravanaisdrunk.site.live\n
+    help_string = """@UniBorg ( **تمّ التعديل بواسطة** @channel22_22 ) \n**تمّ التحقّق من الحساب**: ✅\n**Official Website**: https://ravanaisdrunk.site.live\n
 Pithun {}
 Talethrun {}
  
-**Custom Built Fork**: https://github.com/ravana69/PornHub""".format(
+**هذا التعديل مُقدّم من**: @channel22_22""".format(
         sys.version,
         __version__
     )
@@ -54,7 +55,7 @@ async def _(event):
     result = await borg(functions.help.GetConfigRequest())  # pylint:disable=E0602
     result = result.stringify()
     logger.info(result)  # pylint:disable=E0602
-    await event.edit("""Telethon UserBot powered by @UniBorg""")
+    await event.edit("""هذه الميّزة مبنيّة بواسطة by @UniBorg""")
 
 
 @borg.on(admin_cmd(pattern="gandu (.*)"))
