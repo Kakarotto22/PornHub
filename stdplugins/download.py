@@ -19,7 +19,7 @@ from uniborg.util import admin_cmd, humanbytes, progress, time_formatter
 async def _(event):
     if event.fwd_from:
         return
-    mone = await event.reply("Processing ...")
+    mone = await event.reply("جاري مُعالجة الطّلب...")
     input_str = event.pattern_match.group(1)
     if not os.path.isdir(Config.TMP_DOWNLOAD_DIRECTORY):
         os.makedirs(Config.TMP_DOWNLOAD_DIRECTORY)
@@ -32,7 +32,7 @@ async def _(event):
                 reply_message,
                 Config.TMP_DOWNLOAD_DIRECTORY,
                 progress_callback=lambda d, t: asyncio.get_event_loop().create_task(
-                    progress(d, t, mone, c_time, "trying to download")
+                    progress(d, t, mone, c_time, "جاري التنزيل...")
                 )
             )
         except Exception as e:  # pylint:disable=C0103,W0703
@@ -40,7 +40,7 @@ async def _(event):
         else:
             end = datetime.now()
             ms = (end - start).seconds
-            await mone.edit("Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms))
+            await mone.edit("تمّ التحميل إلى `{}` خلال \n  {} ثواني.".format(downloaded_file_name, ms))
     elif input_str:
         start = datetime.now()
         url = input_str
@@ -69,7 +69,7 @@ async def _(event):
                 round(percentage, 2))
             estimated_total_time = downloader.get_eta(human=True)
             try:
-                current_message = f"trying to download\nURL: {url}\nFile Name: {file_name}\n{progress_str}\n{humanbytes(downloaded)} of {humanbytes(total_length)}\nETA: {estimated_total_time}"
+                current_message = f"جاري تنزيل\nURL: {url}\nاسم الملفّ: {file_name}\n{progress_str}\n{humanbytes(downloaded)} of {humanbytes(total_length)}\nوقت الإنتهاء: {estimated_total_time}"
                 if round(diff % 10.00) == 0 and current_message != display_message:
                     await mone.edit(current_message)
                     display_message = current_message
@@ -78,8 +78,8 @@ async def _(event):
         end = datetime.now()
         ms = (end - start).seconds
         if downloader.isSuccessful():
-            await mone.edit("Downloaded to `{}` in {} seconds.".format(downloaded_file_name, ms))
+            await mone.edit("تمّ التحميل إلى `{}` خلال\n {} ثواني.".format(downloaded_file_name, ms))
         else:
-            await mone.edit("Incorrect URL\n {}".format(input_str))
+            await mone.edit("غير صحيح URL\n {}".format(input_str))
     else:
-        await mone.edit("Reply to a message to download to my local server.")
+        await mone.edit("قُم بالردّ على الرّسالة لتحميلها إلى الخادم.")
